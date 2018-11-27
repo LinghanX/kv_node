@@ -5,9 +5,10 @@
 #include "message.h"
 
 msg_type check_msg_type(void *msg, uint32_t size) {
-    const auto logger = spdlog::get("console");
+    auto logger = spdlog::get("console");
     auto *first_int = (uint32_t *) msg;
-    *first_int = ntohl(*first_int);
+//    *first_int = ntohl(*first_int);
+    logger -> info("checking msg {}, size is {}", *first_int, size);
 
     if (size == sizeof(get_msg) && *first_int == 0) {
         return msg_type::GET;

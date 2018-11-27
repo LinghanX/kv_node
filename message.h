@@ -6,7 +6,8 @@
 #define KV_CLIENT_MESSAGE_H
 
 #include <cstdint>
-#include <spdlog/spdlog.h>
+#include "include/spdlog/spdlog.h"
+#include "include/spdlog/sinks/stdout_color_sinks.h"
 
 enum msg_type {
     GET,

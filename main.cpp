@@ -122,24 +122,26 @@ int main(int argc, char **argv) {
                 case msg_type::GET:
                 {
                     get_msg* msg = (get_msg *) buf;
-                    std::string key(msg -> key, 256);
+                    std::string key(msg -> key);
                     std::string value = store[key];
                     logger -> info("getting key: {}, value: {}", key, value);
 
                     if (send(incoming_fd, value.c_str(), value.length(), 0) < 0)
                         logger -> error("unable to send value");
 
+                    logger -> info("sent value: {}", value);
+
                     break;
                 }
                 case msg_type::PUT:
                 {
                     put_msg* msg = (put_msg *) buf;
-                    std::string key(msg -> key, 256);
-                    std::string value(msg -> value, 256);
+                    std::string key(msg -> key);
+                    std::string value(msg -> value);
 
                     logger -> info("storing key: {}, value: {}", key, value);
-
                     store[key] = value;
+                    logger -> info("here");
                     break;
                 }
                 case msg_type::KILL:

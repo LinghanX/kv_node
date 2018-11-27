@@ -12,9 +12,10 @@
 #include <unistd.h>
 #include <string.h>
 #include <string>
-#include <spdlog/sinks/stdout_color_sinks.h>
 #include <fstream>
 #include <iostream>
+#include "include/spdlog/spdlog.h"
+#include "include/spdlog/sinks/stdout_color_sinks.h"
 
 // returns a tuple of string with coordinator address and port
 std::tuple<std::string, std::string> handle_input(int argc, char ** argv);
